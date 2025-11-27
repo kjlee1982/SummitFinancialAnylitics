@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Summit Financial Analytics LLC</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Summit Financial Analytics LLC provides data-driven management consulting and operational advisory services to help organizations improve performance." />
+  <style>
+    :root {
+      --bg: #0f172a;
+      --bg-soft: #020617;
+      --accent: #38bdf8;
+      --accent-soft: rgba(56, 189, 248, 0.1);
+      --text: #e5e7eb;
+      --muted: #9ca3af;
+      --card: #020617;
+      --border: #1f2937;
+      --radius: 14px;
+      --shadow: 0 18px 45px rgba(15, 23, 42, 0.85);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif;
+      background: radial-gradient(circle at top, #1d283a 0, #020617 40%, #000 100%);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .page {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(18px);
+      background: linear-gradient(to bottom, rgba(15, 23, 42, 0.95), rgba(15, 23, 42, 0.65), transparent);
+      border-bottom: 1px solid rgba(31, 41, 55, 0.7);
+    }
+
+    .nav {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 14px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-left {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .logo-mark {
+      width: 32px;
+      height: 32px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.35);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: radial-gradient(circle at 20% 0%, #38bdf8, #1d283a 45%, #020617 100%);
+      box-shadow: 0 0 25px rgba(56, 189, 248, 0.4);
+      font-size: 18px;
+      font-weight: 600;
+      color: #e5f2ff;
+    }
+
+    .brand-title {
+      font-size: 15px;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+      color: #9ca3af;
+    }
+
+    .brand-sub {
+      font-size: 12px;
+      color: #6b7280;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 18px;
+      font-size: 13px;
+      color: #9ca3af;
+    }
+
+    .nav-links a {
+      padding: 6px 0;
+      position: relative;
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -3px;
+      width: 0;
+      height: 1px;
+      background: linear-gradient(to right, #38bdf8, #a5b4fc);
+      transition: width 0.18s ease;
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    main {
+      flex: 1;
+    }
+
+    .hero {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 40px 20px 28px;
+      display: grid;
+      grid-template-columns: minmax(0, 2.1fr) minmax(0, 2fr);
+      gap: 40px;
+      align-items: center;
+    }
+
+    @media (max-width: 850px) {
+      .hero {
+        grid-template-columns: minmax(0, 1fr);
+        padding-top: 28px;
+      }
+    }
+
+    .eyebrow {
+      font-size: 11px;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: #9ca3af;
+      margin-bottom: 14px;
+    }
+
+    .hero-title {
+      font-size: clamp(30px, 4vw, 36px);
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      margin-bottom: 10px;
+    }
+
+    .hero-gradient {
+      background: linear-gradient(to right, #f9fafb, #bae6fd, #e5e7eb);
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .hero-subtitle {
+      font-size: 14px;
+      color: var(--muted);
+      max-width: 480px;
+      margin-bottom: 20px;
+    }
+
+    .hero-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 22px;
+    }
+
+    .pill {
+      font-size: 11px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.35);
+      background: radial-gradient(circle at 0 0, rgba(56, 189, 248, 0.08), transparent 55%);
+      color: #cbd5f5;
+    }
+
+    .cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: center;
+      margin-bottom: 16px;
+    }
+
+    .btn-primary {
+      padding: 9px 18px;
+      border-radius: 999px;
+      border: 0;
+      background: linear-gradient(to right, #38bdf8, #4ade80);
+      color: #020617;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 0 14px 35px rgba(56, 189, 248, 0.35);
+    }
+
+    .btn-ghost {
+      padding: 8px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      background: rgba(15, 23, 42, 0.8);
+      color: #e5e7eb;
+      font-size: 12px;
+      cursor: pointer;
+    }
+
+    .cred-line {
+      font-size: 11px;
+      color: #6b7280;
+    }
+
+    .hero-card {
+      background: radial-gradient(circle at top left, rgba(56, 189, 248, 0.22), rgba(15, 23, 42, 0.98));
+      border-radius: 18px;
+      padding: 18px 18px 18px;
+      border: 1px solid rgba(148, 163, 184, 0.35);
+      box-shadow: var(--shadow);
+    }
+
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 14px;
+    }
+
+    .card-title {
+      font-size: 13px;
+      color: #e5e7eb;
+    }
+
+    .badge {
+      font-size: 11px;
+      padding: 4px 9px;
+      border-radius: 999px;
+      border: 1px solid rgba(52, 211, 153, 0.4);
+      color: #bbf7d0;
+      background: rgba(6, 95, 70, 0.4);
+    }
+
+    .metric-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+
+    .metric {
+      padding: 10px 10px;
+      border-radius: 12px;
+      border: 1px solid rgba(15, 23, 42, 0.9);
+      background: rgba(15, 23, 42, 0.88);
+    }
+
+    .metric-label {
+      font-size: 11px;
+      color: #9ca3af;
+      margin-bottom: 4px;
+    }
+
+    .metric-value {
+      font-size: 15px;
+      font-weight: 600;
+    }
+
+    .metric-note {
+      font-size: 10px;
+      color: #6b7280;
+      margin-top: 3px;
+    }
+
+    .list {
+      margin-top: 10px;
+      padding-left: 16px;
+      font-size: 12px;
+      color: #9ca3af;
+    }
+
+    .section {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 4px 20px 26px;
+    }
+
+    .section-title {
+      font-size: 15px;
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+
+    .two-col {
+      display: grid;
+      grid-template-columns: minmax(0, 1.6fr) minmax(0, 1.6fr);
+      gap: 26px;
+    }
+
+    @media (max-width: 850px) {
+      .two-col {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    .card {
+      background: radial-gradient(circle at 0 0, rgba(56, 189, 248, 0.08), rgba(15, 23, 42, 0.98));
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      padding: 16px 16px 14px;
+    }
+
+    .card h3 {
+      font-size: 13px;
+      margin-bottom: 6px;
+    }
+
+    .card p {
+      font-size: 12px;
+      color: var(--muted);
+      margin-bottom: 4px;
+    }
+
+    .card ul {
+      padding-left: 16px;
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .contact {
+      display: grid;
+      grid-template-columns: minmax(0, 2fr) minmax(0, 1.4fr);
+      gap: 26px;
+    }
+
+    @media (max-width: 850px) {
+      .contact {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    form {
+      display: grid;
+      gap: 10px;
+      font-size: 12px;
+    }
+
+    label {
+      font-size: 11px;
+      color: #9ca3af;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 8px 10px;
+      border-radius: 8px;
+      border: 1px solid rgba(31, 41, 55, 0.9);
+      background: rgba(15, 23, 42, 0.9);
+      color: #e5e7eb;
+      font-size: 12px;
+    }
+
+    textarea {
+      min-height: 80px;
+      resize: vertical;
+    }
+
+    footer {
+      border-top: 1px solid rgba(31, 41, 55, 0.8);
+      padding: 12px 20px 18px;
+      font-size: 11px;
+      color: #6b7280;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+  <header>
+    <div class="nav">
+      <div class="nav-left">
+        <div class="logo-mark">S</div>
+        <div>
+          <div class="brand-title">Summit Financial Analytics</div>
+          <div class="brand-sub">Management Consulting & Advisory</div>
+        </div>
+      </div>
+      <nav class="nav-links">
+        <a href="#services">Services</a>
+        <a href="#approach">Approach</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div>
+        <div class="eyebrow">Operational clarity. Better decisions.</div>
+        <h1 class="hero-title">
+          Data-led management consulting for
+          <span class="hero-gradient">lean, efficient organizations.</span>
+        </h1>
+        <p class="hero-subtitle">
+          Summit Financial Analytics LLC helps owners and leadership teams understand their numbers,
+          refine operations, and make confident, performance-focused decisions.
+        </p>
+
+        <div class="hero-tags">
+          <span class="pill">Workflow & process review</span>
+          <span class="pill">KPI & reporting frameworks</span>
+          <span class="pill">Strategic planning support</span>
+        </div>
+
+        <div class="cta-row">
+          <button class="btn-primary" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">
+            Schedule an intro call
+          </button>
+          <button class="btn-ghost" onclick="document.getElementById('services').scrollIntoView({behavior:'smooth'})">
+            View services overview
+          </button>
+        </div>
+        <div class="cred-line">
+          Ideal for small businesses, professional services, and operators who want a clearer view of performance.
+        </div>
+      </div>
+
+      <div class="hero-card">
+        <div class="card-header">
+          <div class="card-title">Advisory Snapshot</div>
+          <div class="badge">Consulting only — no investing</div>
+        </div>
+        <div class="metric-grid">
+          <div class="metric">
+            <div class="metric-label">Engagements</div>
+            <div class="metric-value">Project-based</div>
+            <div class="metric-note">Defined scope & timeframe</div>
+          </div>
+          <div class="metric">
+            <div class="metric-label">Focus</div>
+            <div class="metric-value">Operations</div>
+            <div class="metric-note">Process, reporting, decisions</div>
+          </div>
+          <div class="metric">
+            <div class="metric-label">Working Style</div>
+            <div class="metric-value">Collaborative</div>
+            <div class="metric-note">Owner and leadership aligned</div>
+          </div>
+        </div>
+        <ul class="list">
+          <li>Clarify where time, cash, and effort are going.</li>
+          <li>Translate raw data into simple, usable decision points.</li>
+          <li>Support owners with an objective, outside perspective.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section" id="services">
+      <h2 class="section-title">Services</h2>
+      <div class="two-col">
+        <div class="card">
+          <h3>Management & Operations Consulting</h3>
+          <p>
+            A structured review of your current processes, reporting, and team workflows. Designed to highlight
+            bottlenecks and opportunities to streamline execution.
+          </p>
+          <ul>
+            <li>Operational walk-through and workflow mapping</li>
+            <li>Simple, practical recommendations (no jargon)</li>
+            <li>Support with prioritizing what to implement first</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Financial & Performance Analytics</h3>
+          <p>
+            Turn existing financial and operational data into clear metrics that owners can use to run the business
+            with more confidence.
+          </p>
+          <ul>
+            <li>Basic reporting frameworks and scorecards</li>
+            <li>Visibility into trends, seasonality, and risk</li>
+            <li>Alignment between goals, numbers, and actions</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="approach">
+      <h2 class="section-title">How We Work</h2>
+      <div class="two-col">
+        <div class="card">
+          <h3>Simple, Direct, Practical</h3>
+          <p>
+            No complicated decks or buzzwords—just clear insight into what’s working, what isn’t, and what to do about it
+            over the next 30–90 days.
+          </p>
+          <ul>
+            <li>Short, focused working sessions</li>
+            <li>Owner-friendly language and tools</li>
+            <li>Support via video, phone, and email</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Built Around Your Schedule</h3>
+          <p>
+            Engagements are intentionally lightweight so they fit around the realities of running a business day-to-day.
+          </p>
+          <ul>
+            <li>Clear scope before work begins</li>
+            <li>Check-in cadence set up front</li>
+            <li>Summary notes after each milestone</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="contact">
+      <h2 class="section-title">Contact</h2>
+      <div class="contact">
+        <div class="card">
+          <p>
+            If you’d like to explore working together, share a brief overview of your business and what you’d like help
+            with. You’ll receive a reply with options for a short introductory call.
+          </p>
+          <form>
+            <div>
+              <label for="name">Name</label>
+              <input id="name" name="name" type="text" placeholder="Your name" />
+            </div>
+            <div>
+              <label for="email">Email</label>
+              <input id="email" name="email" type="email" placeholder="you@example.com" />
+            </div>
+            <div>
+              <label for="company">Business name</label>
+              <input id="company" name="company" type="text" placeholder="Company or project" />
+            </div>
+            <div>
+              <label for="message">What would you like help with?</label>
+              <textarea id="message" name="message" placeholder="Briefly describe your situation or goals."></textarea>
+            </div>
+            <div>
+              <button type="submit" class="btn-primary">Send message</button>
+            </div>
+          </form>
+        </div>
+        <div class="card">
+          <h3>Business Details</h3>
+          <p>Summit Financial Analytics LLC</p>
+          <p>Management consulting and advisory services.</p>
+          <p style="margin-top:8px;font-size:11px;color:#9ca3af;">
+            This site is intentionally simple and direct. Banks and partners see a clear, low-risk consulting business
+            with a straightforward service model.
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    Summit Financial Analytics LLC &middot; Management consulting &middot; All rights reserved.
+  </footer>
+</div>
+</body>
+</html>
