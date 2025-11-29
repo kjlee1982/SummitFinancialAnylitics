@@ -2,12 +2,13 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Summit Financial Analytics LLC</title>
+  <title>Summit Financial Analytics LLC – Management Consulting & Advisory</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Summit Financial Analytics LLC provides data-driven management consulting and operational advisory services to help organizations improve performance." />
+  <meta name="description" content="Summit Financial Analytics LLC provides practical management consulting and operational advisory services for small and mid-sized businesses." />
+  <meta name="robots" content="index, follow" />
   <style>
     :root {
-      --bg: #0f172a;
+      --bg: #020617;
       --bg-soft: #020617;
       --accent: #38bdf8;
       --accent-soft: rgba(56, 189, 248, 0.1);
@@ -19,11 +20,7 @@
       --shadow: 0 18px 45px rgba(15, 23, 42, 0.85);
     }
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif;
@@ -33,16 +30,9 @@
       -webkit-font-smoothing: antialiased;
     }
 
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
+    a { color: inherit; text-decoration: none; }
 
-    .page {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-    }
+    .page { min-height: 100vh; display: flex; flex-direction: column; }
 
     header {
       position: sticky;
@@ -62,11 +52,7 @@
       justify-content: space-between;
     }
 
-    .nav-left {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
+    .nav-left { display: flex; align-items: center; gap: 10px; }
 
     .logo-mark {
       width: 32px;
@@ -118,13 +104,9 @@
       transition: width 0.18s ease;
     }
 
-    .nav-links a:hover::after {
-      width: 100%;
-    }
+    .nav-links a:hover::after { width: 100%; }
 
-    main {
-      flex: 1;
-    }
+    main { flex: 1; }
 
     .hero {
       max-width: 1100px;
@@ -237,10 +219,7 @@
       margin-bottom: 14px;
     }
 
-    .card-title {
-      font-size: 13px;
-      color: #e5e7eb;
-    }
+    .card-title { font-size: 13px; color: #e5e7eb; }
 
     .badge {
       font-size: 11px;
@@ -301,6 +280,13 @@
       margin-bottom: 10px;
     }
 
+    .section-intro {
+      font-size: 13px;
+      color: var(--muted);
+      margin-bottom: 12px;
+      max-width: 640px;
+    }
+
     .two-col {
       display: grid;
       grid-template-columns: minmax(0, 1.6fr) minmax(0, 1.6fr);
@@ -308,9 +294,7 @@
     }
 
     @media (max-width: 850px) {
-      .two-col {
-        grid-template-columns: minmax(0, 1fr);
-      }
+      .two-col { grid-template-columns: minmax(0, 1fr); }
     }
 
     .card {
@@ -320,10 +304,7 @@
       padding: 16px 16px 14px;
     }
 
-    .card h3 {
-      font-size: 13px;
-      margin-bottom: 6px;
-    }
+    .card h3 { font-size: 13px; margin-bottom: 6px; }
 
     .card p {
       font-size: 12px;
@@ -337,16 +318,21 @@
       color: var(--muted);
     }
 
-    .contact {
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 8px;
+    }
+
+    .contact-grid {
       display: grid;
       grid-template-columns: minmax(0, 2fr) minmax(0, 1.4fr);
       gap: 26px;
     }
 
     @media (max-width: 850px) {
-      .contact {
-        grid-template-columns: minmax(0, 1fr);
-      }
+      .contact-grid { grid-template-columns: minmax(0, 1fr); }
     }
 
     form {
@@ -370,10 +356,7 @@
       font-size: 12px;
     }
 
-    textarea {
-      min-height: 80px;
-      resize: vertical;
-    }
+    textarea { min-height: 80px; resize: vertical; }
 
     footer {
       border-top: 1px solid rgba(31, 41, 55, 0.8);
@@ -398,12 +381,14 @@
       <nav class="nav-links">
         <a href="#services">Services</a>
         <a href="#approach">Approach</a>
+        <a href="#banks">Banks &amp; Partners</a>
         <a href="#contact">Contact</a>
       </nav>
     </div>
   </header>
 
   <main>
+    <!-- HERO -->
     <section class="hero">
       <div>
         <div class="eyebrow">Operational clarity. Better decisions.</div>
@@ -417,8 +402,8 @@
         </p>
 
         <div class="hero-tags">
-          <span class="pill">Workflow & process review</span>
-          <span class="pill">KPI & reporting frameworks</span>
+          <span class="pill">Workflow &amp; process review</span>
+          <span class="pill">KPI &amp; reporting frameworks</span>
           <span class="pill">Strategic planning support</span>
         </div>
 
@@ -444,7 +429,7 @@
           <div class="metric">
             <div class="metric-label">Engagements</div>
             <div class="metric-value">Project-based</div>
-            <div class="metric-note">Defined scope & timeframe</div>
+            <div class="metric-note">Defined scope &amp; timeline</div>
           </div>
           <div class="metric">
             <div class="metric-label">Focus</div>
@@ -454,7 +439,7 @@
           <div class="metric">
             <div class="metric-label">Working Style</div>
             <div class="metric-value">Collaborative</div>
-            <div class="metric-note">Owner and leadership aligned</div>
+            <div class="metric-note">Owner &amp; leadership aligned</div>
           </div>
         </div>
         <ul class="list">
@@ -465,13 +450,18 @@
       </div>
     </section>
 
+    <!-- SERVICES -->
     <section class="section" id="services">
       <h2 class="section-title">Services</h2>
+      <p class="section-intro">
+        The goal is simple: give you a clearer way to run your business. Engagements are practical, time-bounded,
+        and focused on what you can implement over the next 30–90 days.
+      </p>
       <div class="two-col">
         <div class="card">
-          <h3>Management & Operations Consulting</h3>
+          <h3>Management &amp; Operations Consulting</h3>
           <p>
-            A structured review of your current processes, reporting, and team workflows. Designed to highlight
+            A structured review of your current processes, reporting, and team workflows, designed to highlight
             bottlenecks and opportunities to streamline execution.
           </p>
           <ul>
@@ -481,7 +471,7 @@
           </ul>
         </div>
         <div class="card">
-          <h3>Financial & Performance Analytics</h3>
+          <h3>Financial &amp; Performance Analytics</h3>
           <p>
             Turn existing financial and operational data into clear metrics that owners can use to run the business
             with more confidence.
@@ -495,6 +485,7 @@
       </div>
     </section>
 
+    <!-- APPROACH -->
     <section class="section" id="approach">
       <h2 class="section-title">How We Work</h2>
       <div class="two-col">
@@ -524,14 +515,60 @@
       </div>
     </section>
 
+    <!-- BANKS & PARTNERS -->
+    <section class="section" id="banks">
+      <h2 class="section-title">Information for Banks &amp; Partners</h2>
+      <p class="section-intro">
+        Summit Financial Analytics LLC is a small management consulting business. The company provides advisory,
+        analytics, and operational consulting services only. It does not engage in lending, brokerage, or
+        investment management activities.
+      </p>
+      <div class="two-col">
+        <div class="card">
+          <h3>Business Profile</h3>
+          <ul>
+            <li><strong>Legal name:</strong> Summit Financial Analytics LLC</li>
+            <li><strong>Entity type:</strong> Single-member limited liability company</li>
+            <li><strong>Industry:</strong> Management Consulting</li>
+            <li><strong>Primary NAICS:</strong> 541611 – Administrative &amp; Management Consulting</li>
+            <li><strong>Services:</strong> Operations review, reporting frameworks, advisory support</li>
+          </ul>
+          <div class="pill-row">
+            <span class="pill">Service-based</span>
+            <span class="pill">No inventory</span>
+            <span class="pill">Low-risk operations</span>
+          </div>
+        </div>
+        <div class="card">
+          <h3>Risk &amp; Compliance Notes</h3>
+          <p>
+            Work is strictly advisory and analytical. Typical activity includes client consultations, reporting,
+            and light operational support. There is no consumer lending, no securities trading on behalf of clients,
+            and no property management or construction operations.
+          </p>
+          <ul>
+            <li>Service-only, consulting revenue model</li>
+            <li>Remote and light in-person work</li>
+            <li>Standard business expenses (software, professional services, travel)</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
     <section class="section" id="contact">
       <h2 class="section-title">Contact</h2>
-      <div class="contact">
+      <div class="contact-grid">
         <div class="card">
           <p>
-            If you’d like to explore working together, share a brief overview of your business and what you’d like help
-            with. You’ll receive a reply with options for a short introductory call.
+            If you’d like to explore working together, share a brief overview of your business and what you’d
+            like help with. You’ll receive a reply with options for a short introductory call.
           </p>
+          <!--
+            To make this form functional, plug into a service like Formspree or your own backend.
+            Example for Formspree:
+            <form action="https://formspree.io/f/your-id" method="POST">
+          -->
           <form>
             <div>
               <label for="name">Name</label>
@@ -562,13 +599,15 @@
             This site is intentionally simple and direct. Banks and partners see a clear, low-risk consulting business
             with a straightforward service model.
           </p>
+          <!-- Optional: add real contact details when ready -->
+          <!-- <p style="margin-top:10px;font-size:12px;">Email: info@yourdomain.com<br />Phone: (xxx) xxx-xxxx</p> -->
         </div>
       </div>
     </section>
   </main>
 
   <footer>
-    Summit Financial Analytics LLC &middot; Management consulting &middot; All rights reserved.
+    Summit Financial Analytics LLC &middot; Management consulting & advisory &middot; All rights reserved.
   </footer>
 </div>
 </body>
