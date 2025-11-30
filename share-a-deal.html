@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Share a Deal – Summit Financial Analytics</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Submit a potential commercial real estate opportunity to Summit Financial Analytics LLC for underwriting review." />
+
+  <style>
+    :root {
+      --bg: #020617;
+      --accent: #38bdf8;
+      --accent-soft: rgba(56, 189, 248, 0.1);
+      --text: #e5e7eb;
+      --muted: #9ca3af;
+      --border: #1f2937;
+      --radius: 14px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif;
+      background: radial-gradient(circle at top, #1d283a 0, #020617 40%, #000 100%);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      backdrop-filter: blur(18px);
+      background: linear-gradient(
+        to bottom,
+        rgba(15, 23, 42, 0.95),
+        rgba(15, 23, 42, 0.65),
+        transparent
+      );
+      border-bottom: 1px solid rgba(31, 41, 55, 0.7);
+    }
+
+    .nav {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 14px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .nav-left { display: flex; align-items: center; gap: 10px; }
+
+    .brand-link {
+      text-decoration: none;
+      color: inherit;
+      display: inline-flex;
+      align-items: center;
+      position: relative;
+      transition: transform 0.25s ease, opacity 0.25s ease;
+      transform-style: preserve-3d;
+    }
+
+    .brand-link::after {
+      content: "";
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0%;
+      height: 1px;
+      background: linear-gradient(to right, #38bdf8, #93c5fd);
+      transition: width 0.32s ease;
+      opacity: 0.9;
+    }
+
+    .brand-link:hover {
+      transform: translateY(-1px) scale(1.015) rotateX(0.8deg) rotateY(-0.8deg);
+      opacity: 0.98;
+    }
+
+    .brand-link:hover::after { width: 100%; }
+
+    .logo-mark {
+      width: 32px;
+      height: 32px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.35);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: radial-gradient(circle at 20% 0%, #38bdf8, #1d283a 45%, #020617 100%);
+      background-size: 200% 200%;
+      box-shadow: 0 0 18px rgba(15, 23, 42, 0.9);
+      font-size: 18px;
+      font-weight: 600;
+      color: #e5f2ff;
+      animation: logoGlow 6s ease-in-out infinite;
+    }
+
+    .brand-title {
+      font-size: 15px;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+      color: #9ca3af;
+    }
+
+    .brand-sub { font-size: 12px; color: #6b7280; }
+
+    .nav-links {
+      display: flex;
+      gap: 18px;
+      font-size: 13px;
+      color: #9ca3af;
+    }
+
+    .nav-links a {
+      padding: 6px 0;
+      position: relative;
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -3px;
+      width: 0;
+      height: 1px;
+      background: linear-gradient(to right, #38bdf8, #a5b4fc);
+      transition: width 0.18s ease;
+    }
+
+    .nav-links a:hover::after { width: 100%; }
+
+    main { max-width: 1100px; margin: 0 auto; padding: 28px 20px 32px; }
+
+    .page-title {
+      font-size: clamp(26px, 3.4vw, 30px);
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+
+    .page-subtitle {
+      font-size: 13px;
+      color: var(--muted);
+      margin-bottom: 22px;
+      max-width: 720px;
+    }
+
+    .card {
+      background: radial-gradient(circle at 0 0, rgba(56,189,248,0.08), rgba(15,23,42,0.98));
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      padding: 18px 18px 16px;
+      margin-bottom: 18px;
+    }
+
+    .card h2 {
+      font-size: 16px;
+      margin-bottom: 4px;
+    }
+
+    .card h3 {
+      font-size: 13px;
+      margin-top: 10px;
+      margin-bottom: 4px;
+    }
+
+    .card p {
+      font-size: 12px;
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      font-size: 12px;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px 16px;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px 16px;
+    }
+
+    @media (max-width: 800px) {
+      .grid-2, .grid-3 {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    label {
+      display: block;
+      font-size: 11px;
+      color: #9ca3af;
+      margin-bottom: 3px;
+    }
+
+    input, select, textarea {
+      width: 100%;
+      padding: 7px 9px;
+      border-radius: 8px;
+      border: 1px solid rgba(31,41,55,0.9);
+      background: rgba(15,23,42,0.9);
+      color: #e5e7eb;
+      font-size: 12px;
+    }
+
+    textarea { min-height: 70px; resize: vertical; }
+
+    .btn-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 6px;
+    }
+
+    .btn-primary {
+      padding: 9px 18px;
+      border-radius: 999px;
+      border: 0;
+      background: linear-gradient(to right, #38bdf8, #4ade80);
+      color: #020617;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 0 14px 35px rgba(56,189,248,0.35);
+    }
+
+    .btn-ghost {
+      padding: 8px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(148,163,184,0.4);
+      background: rgba(15,23,42,0.8);
+      color: #e5e7eb;
+      font-size: 12px;
+      cursor: pointer;
+    }
+
+    #form-status {
+      font-size: 11px;
+      color: #9ca3af;
+      margin-top: 4px;
+    }
+
+    footer {
+      border-top: 1px solid rgba(31,41,55,0.8);
+      padding: 12px 20px 18px;
+      font-size: 11px;
+      color: #6b7280;
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    /* logo idle glow */
+    @keyframes logoGlow {
+      0% {
+        background-position: 0% 0%;
+        box-shadow: 0 0 18px rgba(15, 23, 42, 0.9);
+        transform: translateZ(0);
+      }
+      35% {
+        background-position: 40% 20%;
+        box-shadow: 0 0 20px rgba(56, 189, 248, 0.35);
+        transform: translateZ(0);
+      }
+      50% {
+        background-position: 60% 40%;
+        box-shadow: 0 0 26px rgba(56, 189, 248, 0.55);
+        transform: translateZ(1px);
+      }
+      75% {
+        background-position: 30% 10%;
+        box-shadow: 0 0 20px rgba(56, 189, 248, 0.35);
+        transform: translateZ(0);
+      }
+      100% {
+        background-position: 0% 0%;
+        box-shadow: 0 0 18px rgba(15, 23, 42, 0.9);
+        transform: translateZ(0);
+      }
+    }
+  </style>
+</head>
+<body>
+<header>
+  <div class="nav">
+    <a href="https://summitfinancialanalytics.com/" class="brand-link">
+      <div class="nav-left">
+        <div class="logo-mark">S</div>
+        <div>
+          <div class="brand-title">Summit Financial Analytics</div>
+          <div class="brand-sub">Private Commercial Real Estate</div>
+        </div>
+      </div>
+    </a>
+    <nav class="nav-links">
+      <a href="index.html#strategy">Strategy</a>
+      <a href="index.html#focus">Asset Focus</a>
+      <a href="index.html#banks">Banks &amp; Partners</a>
+      <a href="index.html#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <h1 class="page-title">Submit a Deal for Review</h1>
+  <p class="page-subtitle">
+    Use this form to share a potential acquisition: apartments, RV parks, storage, or related commercial properties.
+    The more detail you provide, the more meaningful the initial underwriting pass can be.
+  </p>
+
+  <!-- Deal intake form -->
+  <form id="deal-form" action="https://formspree.io/f/mangrgwq" method="POST">
+    <input type="hidden" name="form_type" value="Deal Intake" />
+    <input type="hidden" name="_redirect" value="https://summitfinancialanalytics.com/thanks.html" />
+
+    <!-- Contact / Basic Property Info -->
+    <div class="card">
+      <h2>Contact &amp; Basic Property Information</h2>
+      <p>Tell me who you are and the basics of the property you’re submitting.</p>
+      <div class="grid-2">
+        <div>
+          <label for="contact_name">Your name</label>
+          <input id="contact_name" name="Contact Name" required />
+        </div>
+        <div>
+          <label for="contact_email">Your email</label>
+          <input id="contact_email" name="Contact Email" type="email" required />
+        </div>
+        <div>
+          <label for="contact_role">Your role (broker, owner, wholesaler, investor, etc.)</label>
+          <input id="contact_role" name="Contact Role" />
+        </div>
+        <div>
+          <label for="contact_phone">Phone</label>
+          <input id="contact_phone" name="Contact Phone" />
+        </div>
+        <div>
+          <label for="property_name">Property name</label>
+          <input id="property_name" name="Property Name" />
+        </div>
+        <div>
+          <label for="property_address">Property address / city / state</label>
+          <input id="property_address" name="Property Address" />
+        </div>
+      </div>
+    </div>
+
+    <!-- Advanced Property Details -->
+    <div class="card">
+      <h2>Advanced Property Details</h2>
+      <div class="grid-2">
+        <div>
+          <label for="bedrooms">Bedrooms</label>
+          <input id="bedrooms" name="Bedrooms" />
+        </div>
+        <div>
+          <label for="bathrooms">Bathrooms</label>
+          <input id="bathrooms" name="Bathrooms" />
+        </div>
+        <div>
+          <label for="property_type">Property type</label>
+          <select id="property_type" name="Property Type">
+            <option value="">Select</option>
+            <option>Multifamily</option>
+            <option>RV park / campground</option>
+            <option>Self-storage</option>
+            <option>Mixed-use</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div>
+          <label for="units">Number of units / spaces</label>
+          <input id="units" name="Units" />
+        </div>
+        <div>
+          <label for="house_size">Building size (sq ft)</label>
+          <input id="house_size" name="Building Size (sq ft)" />
+        </div>
+        <div>
+          <label for="lot_size">Lot size (sq ft or acres)</label>
+          <input id="lot_size" name="Lot Size" />
+        </div>
+        <div>
+          <label for="year_built">Year built</label>
+          <input id="year_built" name="Year Built" />
+        </div>
+        <div>
+          <label for="year_renovated">Year renovated (if applicable)</label>
+          <input id="year_renovated" name="Year Renovated" />
+        </div>
+        <div>
+          <label for="stories">Stories</label>
+          <input id="stories" name="Stories" />
+        </div>
+        <div>
+          <label for="heating_type">Heating type</label>
+          <input id="heating_type" name="Heating Type" />
+        </div>
+        <div>
+          <label for="cooling_type">Cooling type</label>
+          <input id="cooling_type" name="Cooling Type" />
+        </div>
+        <div>
+          <label for="roofing_type">Roofing type / material</label>
+          <input id="roofing_type" name="Roofing Type / Material" />
+        </div>
+        <div>
+          <label for="siding_material">Siding material</label>
+          <input id="siding_material" name="Siding Material" />
+        </div>
+        <div>
+          <label for="wiring_condition">Wiring condition</label>
+          <input id="wiring_condition" name="Wiring Condition" />
+        </div>
+        <div>
+          <label for="plumbing_condition">Plumbing condition</label>
+          <input id="plumbing_condition" name="Plumbing Condition" />
+        </div>
+      </div>
+    </div>
+
+    <!-- Purchase Details -->
+    <div class="card">
+      <h2>Purchase Details</h2>
+      <div class="grid-2">
+        <div>
+          <label for="purchase_price">Purchase price</label>
+          <input id="purchase_price" name="Purchase Price" />
+        </div>
+        <div>
+          <label for="arv">After repair value (ARV) / projected stabilized value</label>
+          <input id="arv" name="ARV / Stabilized Value" />
+        </div>
+        <div>
+          <label for="repair_costs">Estimated repair / renovation costs</label>
+          <input id="repair_costs" name="Estimated Repair Costs" />
+        </div>
+        <div>
+          <label for="closing_costs">Estimated closing costs</label>
+          <input id="closing_costs" name="Closing Costs" />
+        </div>
+      </div>
+      <h3>Notes on purchase</h3>
+      <textarea name="Purchase Notes" placeholder="Summary of the deal, timing, seller situation, etc."></textarea>
+    </div>
+
+    <!-- Financing Details -->
+    <div class="card">
+      <h2>Financing Details</h2>
+      <div class="grid-2">
+        <div>
+          <label for="cash_purchase">Cash purchase?</label>
+          <select id="cash_purchase" name="Cash Purchase">
+            <option value="">Select</option>
+            <option>Yes</option>
+            <option>No</option>
+          </select>
+        </div>
+        <div>
+          <label for="financing_type">Financing type</label>
+          <select id="financing_type" name="Financing Type">
+            <option value="">Select</option>
+            <option>Bank debt</option>
+            <option>Agency</option>
+            <option>SBA</option>
+            <option>Seller financing</option>
+            <option>Private / other</option>
+          </select>
+        </div>
+        <div>
+          <label for="mortgage_type">Mortgage type</label>
+          <input id="mortgage_type" name="Mortgage Type" />
+        </div>
+        <div>
+          <label for="down_payment_pct">Down payment (% of purchase price)</label>
+          <input id="down_payment_pct" name="Down Payment % of Purchase" />
+        </div>
+        <div>
+          <label for="interest_rate">Interest rate (%)</label>
+          <input id="interest_rate" name="Interest Rate %" />
+        </div>
+        <div>
+          <label for="loan_amortization">Loan amortization (years)</label>
+          <input id="loan_amortization" name="Loan Amortization (yrs)" />
+        </div>
+        <div>
+          <label for="loan_term">Loan term (months or years)</label>
+          <input id="loan_term" name="Loan Term" />
+        </div>
+        <div>
+          <label for="loan_amount">Base loan amount</label>
+          <input id="loan_amount" name="Base Loan Amount" />
+        </div>
+        <div>
+          <label for="origination_fees">Lender origination fees</label>
+          <input id="origination_fees" name="Lender Origination Fees" />
+        </div>
+        <div>
+          <label for="points">Points</label>
+          <input id="points" name="Points" />
+        </div>
+        <div>
+          <label for="mi_ufmip">Mortgage insurance / UFMIP</label>
+          <input id="mi_ufmip" name="Mortgage Insurance (UFMIP)" />
+        </div>
+        <div>
+          <label for="other_fees">Other financing-related fees</label>
+          <input id="other_fees" name="Other Fees" />
+        </div>
+      </div>
+      <h3>Financing notes</h3>
+      <textarea name="Financing Notes" placeholder="Any additional structure details, seller carryback, interest-only period, etc."></textarea>
+    </div>
+
+    <!-- Rental Income -->
+    <div class="card">
+      <h2>Rental Property Income</h2>
+      <div class="grid-2">
+        <div>
+          <label for="gross_rent">Total gross monthly rent</label>
+          <input id="gross_rent" name="Total Gross Monthly Rent" />
+        </div>
+        <div>
+          <label for="other_income">Total other income (monthly)</label>
+          <input id="other_income" name="Total Other Income" />
+        </div>
+        <div>
+          <label for="units_occupied">Total number of units occupied</label>
+          <input id="units_occupied" name="Total Units Occupied" />
+        </div>
+        <div>
+          <label for="deposits">Total security deposits held</label>
+          <input id="deposits" name="Total Security Deposits Held" />
+        </div>
+        <div>
+          <label for="market_cap">Market cap rate (%)</label>
+          <input id="market_cap" name="Market CAP Rate %" />
+        </div>
+        <div>
+          <label for="appraised_value">Actual appraised value (if available)</label>
+          <input id="appraised_value" name="Actual Appraised Value" />
+        </div>
+      </div>
+      <h3>Unit mix &amp; other income breakdown</h3>
+      <textarea name="Unit Mix & Other Income Breakdown" placeholder="Unit types, rents, occupancy by unit type, sources of other income, etc."></textarea>
+    </div>
+
+    <!-- Future Income Assumptions -->
+    <div class="card">
+      <h2>Future Income Assumptions</h2>
+      <div class="grid-2">
+        <div>
+          <label for="income_growth">Annual income growth rate (%)</label>
+          <input id="income_growth" name="Annual Income Growth Rate %" />
+        </div>
+        <div>
+          <label for="other_income_growth">Annual other income growth rate (%)</label>
+          <input id="other_income_growth" name="Annual Other Income Growth Rate %" />
+        </div>
+      </div>
+    </div>
+
+    <!-- Expenses -->
+    <div class="card">
+      <h2>Expenses</h2>
+
+      <h3>Fixed Property Expenses</h3>
+      <div class="grid-3">
+        <div>
+          <label for="mortgage_ins">Mortgage insurance (monthly)</label>
+          <input id="mortgage_ins" name="Mortgage Insurance (Fixed)" />
+        </div>
+        <div>
+          <label for="property_taxes">Property taxes (monthly)</label>
+          <input id="property_taxes" name="Property Taxes (Monthly)" />
+        </div>
+        <div>
+          <label for="hoa_fees">HOA fees (monthly)</label>
+          <input id="hoa_fees" name="HOA Fees (Monthly)" />
+        </div>
+      </div>
+
+      <h3>Utilities (Monthly)</h3>
+      <div class="grid-2">
+        <div>
+          <label for="electricity">Electricity</label>
+          <input id="electricity" name="Electricity" />
+        </div>
+        <div>
+          <label for="water_sewer">Water / sewer</label>
+          <input id="water_sewer" name="Water / Sewer" />
+        </div>
+        <div>
+          <label for="gas">Gas</label>
+          <input id="gas" name="Gas" />
+        </div>
+        <div>
+          <label for="trash">Trash</label>
+          <input id="trash" name="Trash" />
+        </div>
+      </div>
+
+      <h3>Repairs, Maintenance &amp; Other Fixed</h3>
+      <div class="grid-2">
+        <div>
+          <label for="landscaping">Landscaping</label>
+          <input id="landscaping" name="Landscaping" />
+        </div>
+        <div>
+          <label for="snow_removal">Snow removal</label>
+          <input id="snow_removal" name="Snow Removal" />
+        </div>
+        <div>
+          <label for="legal_prof">Legal &amp; professional</label>
+          <input id="legal_prof" name="Legal & Professional" />
+        </div>
+        <div>
+          <label for="ganda">General &amp; administrative</label>
+          <input id="ganda" name="General & Administrative" />
+        </div>
+        <div>
+          <label for="prop_ins">Property insurance</label>
+          <input id="prop_ins" name="Property Insurance" />
+        </div>
+        <div>
+          <label for="other_monthly_exp">Other monthly expenses</label>
+          <input id="other_monthly_exp" name="Other Monthly Expenses" />
+        </div>
+      </div>
+
+      <h3>Variable Monthly Expenses (as % of GPI)</h3>
+      <div class="grid-2">
+        <div>
+          <label for="pm_pct">Property management (% of GPI)</label>
+          <input id="pm_pct" name="Property Management % of GPI" />
+        </div>
+        <div>
+          <label for="rm_pct">Repairs &amp; maintenance (% of GPI)</label>
+          <input id="rm_pct" name="Repairs & Maintenance % of GPI" />
+        </div>
+        <div>
+          <label for="capex_pct">Capital expenses (% of GPI)</label>
+          <input id="capex_pct" name="Capital Expenses % of GPI" />
+        </div>
+        <div>
+          <label for="vacancy_pct">Vacancy (% of GPI)</label>
+          <input id="vacancy_pct" name="Vacancy % of GPI" />
+        </div>
+      </div>
+
+      <h3>Future Expenses</h3>
+      <div class="grid-2">
+        <div>
+          <label for="taxes_future">Taxes (annual)</label>
+          <input id="taxes_future" name="Taxes (Annual)" />
+        </div>
+        <div>
+          <label for="tax_growth">Annual tax expense growth (%)</label>
+          <input id="tax_growth" name="Annual Tax Expense Growth %" />
+        </div>
+        <div>
+          <label for="ins_growth">Annual insurance expense growth (%)</label>
+          <input id="ins_growth" name="Annual Insurance Expense Growth %" />
+        </div>
+        <div>
+          <label for="rm_growth">Annual repairs &amp; maintenance expense growth (%)</label>
+          <input id="rm_growth" name="Annual Repairs & Maintenance Expense Growth %" />
+        </div>
+      </div>
+    </div>
+
+    <!-- Additional notes -->
+    <div class="card">
+      <h2>Additional Notes or Attachments</h2>
+      <p>
+        Include any other context (photos links, OM links, Dropbox links for financials, etc.).
+        File uploads are not supported directly here, but you can paste share links.
+      </p>
+      <textarea name="Additional Notes"></textarea>
+    </div>
+
+    <div class="btn-row">
+      <button type="submit" class="btn-primary">Submit deal</button>
+      <a href="index.html" class="btn-ghost">Back to main site</a>
+    </div>
+    <div id="form-status"></div>
+  </form>
+</main>
+
+<footer>
+  Summit Financial Analytics LLC &middot; Deal Intake
+</footer>
+
+</body>
+</html>
