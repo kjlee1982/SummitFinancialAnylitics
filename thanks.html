@@ -2,86 +2,261 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Thank You | Summit Financial Analytics</title>
-  <link rel="stylesheet" href="styles.css" />
-
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Thank you for contacting Summit Financial Analytics LLC." />
   <style>
-    body {
-      margin: 0;
-      padding: 0;
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-      background: #f9fafb;
-      color: #111827;
+    :root {
+      --bg: #020617;
+      --accent: #38bdf8;
+      --accent-soft: rgba(56, 189, 248, 0.1);
+      --text: #e5e7eb;
+      --muted: #9ca3af;
+      --border: #1f2937;
+      --radius: 14px;
+      --shadow: 0 18px 45px rgba(15, 23, 42, 0.85);
     }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif;
+      background: radial-gradient(circle at top, #1d283a 0, #020617 40%, #000 100%);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    .page { min-height: 100vh; display: flex; flex-direction: column; }
 
     header {
-      background: #0f172a;
-      color: white;
-      padding: 20px 40px;
-      text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(18px);
+      background: linear-gradient(to bottom, rgba(15, 23, 42, 0.95), rgba(15, 23, 42, 0.65), transparent);
+      border-bottom: 1px solid rgba(31, 41, 55, 0.7);
     }
 
-    .container {
+    .nav {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 14px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-left { display: flex; align-items: center; gap: 10px; }
+
+    .logo-mark {
+      width: 32px;
+      height: 32px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.35);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: radial-gradient(circle at 20% 0%, #38bdf8, #1d283a 45%, #020617 100%);
+      box-shadow: 0 0 25px rgba(56, 189, 248, 0.4);
+      font-size: 18px;
+      font-weight: 600;
+      color: #e5f2ff;
+    }
+
+    .brand-title {
+      font-size: 15px;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+      color: #9ca3af;
+    }
+
+    .brand-sub {
+      font-size: 12px;
+      color: #6b7280;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 18px;
+      font-size: 13px;
+      color: #9ca3af;
+    }
+
+    .nav-links a {
+      padding: 6px 0;
+      position: relative;
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -3px;
+      width: 0;
+      height: 1px;
+      background: linear-gradient(to right, #38bdf8, #a5b4fc);
+      transition: width 0.18s ease;
+    }
+
+    .nav-links a:hover::after { width: 100%; }
+
+    main { flex: 1; }
+
+    .center-wrap {
       max-width: 700px;
-      margin: 60px auto;
-      background: white;
-      padding: 40px;
-      border-radius: 10px;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-      text-align: center;
+      margin: 70px auto 40px;
+      padding: 0 20px;
+    }
+
+    .card {
+      background: radial-gradient(circle at 0 0, rgba(56, 189, 248, 0.08), rgba(15, 23, 42, 0.98));
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      padding: 26px 22px 22px;
+      box-shadow: var(--shadow);
+      text-align: left;
+    }
+
+    .eyebrow {
+      font-size: 11px;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: #9ca3af;
+      margin-bottom: 10px;
     }
 
     h1 {
-      margin-top: 0;
-      font-size: 32px;
-      color: #0f172a;
+      font-size: 26px;
+      font-weight: 600;
+      margin-bottom: 10px;
+      background: linear-gradient(to right, #f9fafb, #bae6fd, #e5e7eb);
+      -webkit-background-clip: text;
+      color: transparent;
     }
 
     p {
-      margin: 15px 0;
-      line-height: 1.6;
-      font-size: 16px;
-      color: #374151;
+      font-size: 14px;
+      color: var(--muted);
+      margin-bottom: 10px;
     }
 
-    a.btn {
-      margin-top: 30px;
-      display: inline-block;
-      background: #1e3a8a;
-      color: white;
-      padding: 12px 25px;
-      border-radius: 6px;
+    .highlight {
+      color: #e5e7eb;
+    }
+
+    .contact-line {
+      margin-top: 10px;
+      font-size: 13px;
+    }
+
+    .contact-line a {
+      color: #bae6fd;
       text-decoration: none;
-      font-weight: 600;
-      transition: background 0.2s ease;
     }
 
-    a.btn:hover {
-      background: #172554;
+    .contact-line a:hover {
+      text-decoration: underline;
+    }
+
+    .actions {
+      margin-top: 18px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .btn-primary {
+      padding: 9px 18px;
+      border-radius: 999px;
+      border: 0;
+      background: linear-gradient(to right, #38bdf8, #4ade80);
+      color: #020617;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 0 14px 35px rgba(56, 189, 248, 0.35);
+    }
+
+    .btn-ghost {
+      padding: 8px 16px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      background: rgba(15, 23, 42, 0.8);
+      color: #e5e7eb;
+      font-size: 12px;
+      cursor: pointer;
+    }
+
+    footer {
+      border-top: 1px solid rgba(31, 41, 55, 0.8);
+      padding: 12px 20px 18px;
+      font-size: 11px;
+      color: #6b7280;
+      text-align: center;
+    }
+
+    @media (max-width: 640px) {
+      .center-wrap { margin-top: 50px; }
     }
   </style>
 </head>
-
 <body>
+<div class="page">
   <header>
-    <h2>Summit Financial Analytics</h2>
+    <div class="nav">
+      <div class="nav-left">
+        <div class="logo-mark">S</div>
+        <div>
+          <div class="brand-title">Summit Financial Analytics</div>
+          <div class="brand-sub">Management Consulting & Advisory</div>
+        </div>
+      </div>
+      <nav class="nav-links">
+        <a href="/">Home</a>
+        <a href="/#services">Services</a>
+        <a href="/#banks">Banks &amp; Partners</a>
+      </nav>
+    </div>
   </header>
 
-  <div class="container">
-    <h1>Thank You</h1>
-    <p>Your message has been received successfully.</p>
-    <p>
-      I’ll review your details and get back to you shortly with next steps.  
-      If your inquiry is time-sensitive, feel free to reach out directly:
-    </p>
+  <main>
+    <div class="center-wrap">
+      <div class="card">
+        <div class="eyebrow">Message received</div>
+        <h1>Thank you for reaching out.</h1>
+        <p class="highlight">
+          Your message has been submitted successfully.
+        </p>
+        <p>
+          I’ll review what you shared and respond with next steps as soon as possible. In most cases,
+          you can expect a reply within one business day.
+        </p>
+        <p class="contact-line">
+          If your request is time-sensitive, you’re welcome to contact me directly:
+        </p>
+        <p class="contact-line">
+          📞 <a href="tel:+18086578050">(808) 657-8050</a><br />
+          ✉️ <a href="mailto:kelanlee@summitfinancialanalytics.com">kelanlee@summitfinancialanalytics.com</a>
+        </p>
 
-    <p>
-      📞 <strong>(808) 657-8050</strong><br />
-      ✉️ <strong>kelanlee@summitfinancialanalytics.com</strong>
-    </p>
+        <div class="actions">
+          <button class="btn-primary" onclick="window.location.href='/'">
+            Return to homepage
+          </button>
+          <button class="btn-ghost" onclick="window.location.href='/#services'">
+            View services
+          </button>
+        </div>
+      </div>
+    </div>
+  </main>
 
-    <a class="btn" href="/">Return to Homepage</a>
-  </div>
+  <footer>
+    Summit Financial Analytics LLC &middot; Management consulting & advisory &middot; All rights reserved.
+  </footer>
+</div>
 </body>
 </html>
